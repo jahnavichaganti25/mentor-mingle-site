@@ -4,9 +4,11 @@ import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { Link } from "react-router-dom";
 import { HTMLProps } from "react";
 
 interface CourseCardProps extends HTMLProps<HTMLDivElement> {
+  id: string;
   title: string;
   logo: string;
   instructor: string;
@@ -14,32 +16,34 @@ interface CourseCardProps extends HTMLProps<HTMLDivElement> {
   price: string;
 }
 
-const CourseCard = ({ title, logo, instructor, level, price }: CourseCardProps) => (
-  <Card className="overflow-hidden hover:shadow-lg transition-shadow">
-    <div className="p-6 space-y-4">
-      <img src={logo} alt={title} className="w-24 h-24 mx-auto" />
-      <h3 className="text-xl font-semibold text-center">{title}</h3>
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <img src="/lovable-uploads/ad53633c-804a-483d-aa7e-5d9e24094cdb.png" alt="instructor" className="w-8 h-8 rounded-full" />
-          <span className="text-sm text-gray-600">{instructor}</span>
+const CourseCard = ({ id, title, logo, instructor, level, price }: CourseCardProps) => (
+  <Link to={`/course/${id}`}>
+    <Card className="overflow-hidden hover:shadow-lg transition-shadow">
+      <div className="p-6 space-y-4">
+        <img src={logo} alt={title} className="w-24 h-24 mx-auto" />
+        <h3 className="text-xl font-semibold text-center">{title}</h3>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <img src="/lovable-uploads/ad53633c-804a-483d-aa7e-5d9e24094cdb.png" alt="instructor" className="w-8 h-8 rounded-full" />
+            <span className="text-sm text-gray-600">{instructor}</span>
+          </div>
+          <span className={`px-3 py-1 rounded-full text-sm ${
+            level === "Beginner" ? "bg-blue-100 text-blue-600" : "bg-purple-100 text-purple-600"
+          }`}>
+            {level}
+          </span>
         </div>
-        <span className={`px-3 py-1 rounded-full text-sm ${
-          level === "Beginner" ? "bg-blue-100 text-blue-600" : "bg-purple-100 text-purple-600"
-        }`}>
-          {level}
-        </span>
+        <div className="pt-4 border-t">
+          <span className="font-bold text-lg">{price}</span>
+        </div>
       </div>
-      <div className="pt-4 border-t">
-        <span className="font-bold text-lg">{price}</span>
-      </div>
-    </div>
-  </Card>
+    </Card>
+  </Link>
 );
 
 const courses = [
   {
-    id: 1,
+    id: "html",
     title: "HTML Complete Course 2024",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
     instructor: "CourseMate",
@@ -47,7 +51,7 @@ const courses = [
     price: "₹Free"
   },
   {
-    id: 2,
+    id: "css",
     title: "CSS Complete Course 2024",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
     instructor: "CourseMate",
@@ -55,7 +59,7 @@ const courses = [
     price: "₹Free"
   },
   {
-    id: 3,
+    id: "javascript",
     title: "JavaScript Complete Course 2024",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
     instructor: "CourseMate",
@@ -63,7 +67,7 @@ const courses = [
     price: "₹Free"
   },
   {
-    id: 4,
+    id: "react",
     title: "React JS Complete Course 2024",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
     instructor: "CourseMate",
