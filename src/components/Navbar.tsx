@@ -1,24 +1,19 @@
-
 import { useState } from "react";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
 import { AuthModal } from "./auth/AuthModal";
-
 export const Navbar = () => {
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [authType, setAuthType] = useState<"signin" | "signup">("signin");
-
   const handleAuthClick = (type: "signin" | "signup") => {
     setAuthType(type);
     setShowAuthModal(true);
   };
-
-  return (
-    <>
+  return <>
       <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-sm z-50 border-b">
         <div className="container mx-auto px-4 h-16 flex items-center justify-between">
           <Link to="/" className="flex items-center space-x-2">
-            <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-purple-400">
+            <span className="text-2xl font-bold bg-clip-text bg-gradient-to-r from-purple-600 to-purple-400 text-purple-500">
               Coursemate
             </span>
           </Link>
@@ -36,11 +31,6 @@ export const Navbar = () => {
         </div>
       </nav>
 
-      <AuthModal 
-        isOpen={showAuthModal}
-        onClose={() => setShowAuthModal(false)}
-        defaultTab={authType}
-      />
-    </>
-  );
+      <AuthModal isOpen={showAuthModal} onClose={() => setShowAuthModal(false)} defaultTab={authType} />
+    </>;
 };
