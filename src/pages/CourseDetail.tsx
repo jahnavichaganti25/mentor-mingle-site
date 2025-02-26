@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -7,6 +6,8 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Progress } from "@/components/ui/progress";
 import { useToast } from "@/components/ui/use-toast";
+import { Separator } from "@/components/ui/separator";
+import { ExternalLink } from "lucide-react";
 
 interface Question {
   id: number;
@@ -14,6 +15,67 @@ interface Question {
   options: string[];
   correctAnswer: string;
 }
+
+interface CourseResource {
+  introVideo: string;
+  freeLinks: Array<{
+    platform: string;
+    url: string;
+  }>;
+  paidLinks: Array<{
+    platform: string;
+    url: string;
+  }>;
+}
+
+const courseResources: Record<string, CourseResource> = {
+  "c": {
+    introVideo: "https://tinyurl.com/mt46w46v",
+    freeLinks: [
+      { platform: "Udemy", url: "https://tinyurl.com/2cjxpbdd" },
+      { platform: "YouTube", url: "https://tinyurl.com/mudxmhxt" },
+      { platform: "MIT", url: "https://tinyurl.com/2p9tj8b8" },
+      { platform: "Udacity", url: "https://tinyurl.com/yc6mkmvh" },
+      { platform: "YouTube", url: "https://tinyurl.com/3e3jy9fa" }
+    ],
+    paidLinks: [
+      { platform: "Coursera", url: "https://tinyurl.com/5n72mvpd" },
+      { platform: "Udemy", url: "https://tinyurl.com/v8sdzbtk" },
+      { platform: "Code Academy", url: "https://tinyurl.com/3fymwmrh" }
+    ]
+  },
+  "python": {
+    introVideo: "https://youtu.be/WvhQhj4n6b8",
+    freeLinks: [
+      { platform: "YouTube", url: "https://tinyurl.com/mr3caee8" },
+      { platform: "Udacity", url: "https://tinyurl.com/sbtdpc49" },
+      { platform: "YouTube", url: "https://tinyurl.com/mr2x8kum" },
+      { platform: "Khan Academy", url: "https://tinyurl.com/bzxa4ney" },
+      { platform: "SoloLearn", url: "https://tinyurl.com/3bkzeb67" }
+    ],
+    paidLinks: [
+      { platform: "Coursera", url: "https://tinyurl.com/mr3caee8" },
+      { platform: "Internshala", url: "https://tinyurl.com/4fp685mx" },
+      { platform: "Udemy", url: "https://tinyurl.com/4994dktr" }
+    ]
+  },
+  "java": {
+    introVideo: "https://tinyurl.com/2s9kfhfp",
+    freeLinks: [
+      { platform: "Udacity", url: "https://tinyurl.com/87vjh9c6" },
+      { platform: "YouTube", url: "https://tinyurl.com/2mb5f92b" },
+      { platform: "MIT", url: "https://tinyurl.com/3er9wdby" },
+      { platform: "Udemy", url: "https://tinyurl.com/mryxfmw8" },
+      { platform: "YouTube", url: "https://tinyurl.com/32wx5rau" }
+    ],
+    paidLinks: [
+      { platform: "Coursera", url: "https://tinyurl.com/bdhhkbv3" },
+      { platform: "Java Brains", url: "https://tinyurl.com/bd4dxr8c" },
+      { platform: "Internshala", url: "https://tinyurl.com/2438bnxe" },
+      { platform: "EDX", url: "https://tinyurl.com/k28racxs" }
+    ]
+  }
+};
 
 const courseQuizzes: Record<string, Question[]> = {
   "html": [
@@ -73,6 +135,18 @@ const courseData: Record<string, {
   }
 };
 
+const ResourceLink = ({ platform, url }: { platform: string; url: string }) => (
+  <a 
+    href={url} 
+    target="_blank" 
+    rel="noopener noreferrer" 
+    className="flex items-center justify-between p-3 hover:bg-gray-50 rounded-lg transition-colors"
+  >
+    <span>{platform}</span>
+    <ExternalLink className="w-4 h-4 text-gray-500" />
+  </a>
+);
+
 const CourseDetail = () => {
   const { courseId = "html" } = useParams();
   const navigate = useNavigate();
@@ -84,6 +158,7 @@ const CourseDetail = () => {
 
   const course = courseData[courseId];
   const questions = courseQuizzes[courseId] || [];
+  const resources = courseResources[courseId];
 
   const handleStartQuiz = () => {
     setShowQuiz(true);
@@ -166,15 +241,45 @@ const CourseDetail = () => {
         )}
 
         {/* Resources Section */}
-        {isCompleted && (
+        {isCompleted && resources && (
           <Card className="p-6">
-            <h2 className="text-2xl font-semibold mb-4">Unlocked Resources</h2>
-            <div className="grid gap-4">
-              {course.resources.map((resource) => (
-                <Button key={resource} variant="outline" className="justify-start">
-                  {resource}
-                </Button>
-              ))}
+            <h2 className="text-2xl font-semibold mb-6">Course Resources</h2>
+            
+            {/* Intro Video */}
+            <div className="mb-6">
+              <h3 className="text-lg font-medium mb-3">Introduction Video</h3>
+              <a 
+                href={resources.introVideo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:underline flex items-center gap-2"
+              >
+                Watch on YouTube <ExternalLink className="w-4 h-4" />
+              </a>
+            </div>
+
+            <Separator className="my-6" />
+
+            {/* Free Resources */}
+            <div className="mb-6">
+              <h3 className="text-lg font-medium mb-3">Free Resources</h3>
+              <div className="space-y-1">
+                {resources.freeLinks.map((link, index) => (
+                  <ResourceLink key={index} {...link} />
+                ))}
+              </div>
+            </div>
+
+            <Separator className="my-6" />
+
+            {/* Paid Resources */}
+            <div>
+              <h3 className="text-lg font-medium mb-3">Premium Resources</h3>
+              <div className="space-y-1">
+                {resources.paidLinks.map((link, index) => (
+                  <ResourceLink key={index} {...link} />
+                ))}
+              </div>
             </div>
           </Card>
         )}
