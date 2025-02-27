@@ -1,4 +1,3 @@
-
 import { CourseResource, Question, CourseData } from "@/types/course";
 
 export const courseResources: Record<string, CourseResource> = {
@@ -80,22 +79,32 @@ export const courseQuizzes: Record<string, Question[]> = {
 };
 
 export const courseData: Record<string, CourseData> = {
-  "html": {
-    title: "HTML Complete Course 2024",
-    videoUrl: "https://www.youtube.com/embed/kUMe1FH4CHE",
+  "c": {
+    title: "C Programming Complete Course 2024",
+    videoUrl: "https://www.youtube.com/embed/KJgsSFOSQv0",
     resources: [
-      "Complete HTML Documentation",
-      "HTML Practice Exercises",
+      "Complete C Documentation",
+      "C Practice Exercises",
       "Project Files",
       "Certificate of Completion"
     ]
   },
-  "css": {
-    title: "CSS Complete Course 2024",
-    videoUrl: "https://www.youtube.com/embed/OXGznpKZ_sA",
+  "python": {
+    title: "Python Complete Course 2024",
+    videoUrl: "https://www.youtube.com/embed/rfscVS0vtbw",
     resources: [
-      "Complete CSS Documentation",
-      "CSS Practice Exercises",
+      "Complete Python Documentation",
+      "Python Practice Exercises",
+      "Project Files",
+      "Certificate of Completion"
+    ]
+  },
+  "java": {
+    title: "Java Complete Course 2024",
+    videoUrl: "https://www.youtube.com/embed/eIrMbAQSU34",
+    resources: [
+      "Complete Java Documentation",
+      "Java Practice Exercises",
       "Project Files",
       "Certificate of Completion"
     ]
