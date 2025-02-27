@@ -78,7 +78,7 @@ const courses = [
     title: "HTML Complete Course 2024",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
     instructor: "CourseMate",
-    level: "Advance",
+    level: "Beginner",
     price: "₹Free",
     rating: 4.8,
     description: "Master HTML5 with comprehensive lessons and practical examples"
@@ -108,10 +108,40 @@ const courses = [
     title: "React JS Complete Course 2024",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
     instructor: "CourseMate",
-    level: "Beginner",
+    level: "Advance",
     price: "₹Free",
     rating: 4.7,
     description: "Build modern web applications with React and its ecosystem"
+  },
+  {
+    id: "c",
+    title: "C Programming Complete Course 2024",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg",
+    instructor: "CourseMate",
+    level: "Beginner",
+    price: "₹Free",
+    rating: 4.8,
+    description: "Master C programming from basics to advanced concepts"
+  },
+  {
+    id: "python",
+    title: "Python Complete Course 2024",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+    instructor: "CourseMate",
+    level: "Beginner",
+    price: "₹Free",
+    rating: 4.9,
+    description: "Learn Python programming with hands-on projects and exercises"
+  },
+  {
+    id: "java",
+    title: "Java Complete Course 2024",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+    instructor: "CourseMate",
+    level: "Advance",
+    price: "₹Free",
+    rating: 4.7,
+    description: "Comprehensive Java programming from fundamentals to advanced topics"
   }
 ] as const;
 
