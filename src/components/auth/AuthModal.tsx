@@ -20,7 +20,7 @@ interface AuthModalProps {
 }
 
 export function AuthModal({ isOpen, onClose, defaultTab = "signin" }: AuthModalProps) {
-  const [activeTab, setActiveTab] = useState(defaultTab);
+  const [activeTab, setActiveTab] = useState<"signin" | "signup">(defaultTab);
   const { toast } = useToast();
   const navigate = useNavigate();
 
@@ -41,7 +41,7 @@ export function AuthModal({ isOpen, onClose, defaultTab = "signin" }: AuthModalP
         <DialogHeader>
           <DialogTitle>Welcome to CourseMate</DialogTitle>
         </DialogHeader>
-        <Tabs value={activeTab} onValueChange={setActiveTab}>
+        <Tabs value={activeTab} onValueChange={(value: "signin" | "signup") => setActiveTab(value)}>
           <TabsList className="grid w-full grid-cols-2">
             <TabsTrigger value="signin">Sign In</TabsTrigger>
             <TabsTrigger value="signup">Sign Up</TabsTrigger>
