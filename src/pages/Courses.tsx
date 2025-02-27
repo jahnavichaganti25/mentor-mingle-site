@@ -74,48 +74,18 @@ const CourseCard = ({
 
 const courses = [
   {
-    id: "html",
-    title: "HTML Complete Course 2024",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+    id: "intro-programming",
+    title: "Introduction to Programming",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg",
     instructor: "CourseMate",
     level: "Beginner",
-    price: "₹Free",
-    rating: 4.8,
-    description: "Master HTML5 with comprehensive lessons and practical examples"
-  },
-  {
-    id: "css",
-    title: "CSS Complete Course 2024",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
-    instructor: "CourseMate",
-    level: "Beginner",
-    price: "₹Free",
-    rating: 4.6,
-    description: "Learn modern CSS including Flexbox, Grid, and responsive design"
-  },
-  {
-    id: "javascript",
-    title: "JavaScript Complete Course 2024",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
-    instructor: "CourseMate",
-    level: "Advance",
-    price: "₹Free",
-    rating: 4.9,
-    description: "From basics to advanced JavaScript concepts with real-world projects"
-  },
-  {
-    id: "react",
-    title: "React JS Complete Course 2024",
-    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-    instructor: "CourseMate",
-    level: "Advance",
     price: "₹Free",
     rating: 4.7,
-    description: "Build modern web applications with React and its ecosystem"
+    description: "Learn the fundamentals of programming and computational thinking"
   },
   {
     id: "c",
-    title: "C Programming Complete Course 2024",
+    title: "C Programming",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg",
     instructor: "CourseMate",
     level: "Beginner",
@@ -125,7 +95,7 @@ const courses = [
   },
   {
     id: "python",
-    title: "Python Complete Course 2024",
+    title: "Python Programming",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
     instructor: "CourseMate",
     level: "Beginner",
@@ -135,13 +105,173 @@ const courses = [
   },
   {
     id: "java",
-    title: "Java Complete Course 2024",
+    title: "Java Programming",
     logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
     instructor: "CourseMate",
     level: "Advance",
     price: "₹Free",
     rating: 4.7,
     description: "Comprehensive Java programming from fundamentals to advanced topics"
+  },
+  {
+    id: "cpp",
+    title: "C++ Programming",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg",
+    instructor: "CourseMate",
+    level: "Advance",
+    price: "₹Free",
+    rating: 4.6,
+    description: "Learn object-oriented programming with C++"
+  },
+  {
+    id: "dsa",
+    title: "Data Structures & Algorithms",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg",
+    instructor: "CourseMate",
+    level: "Advance",
+    price: "₹Free",
+    rating: 4.8,
+    description: "Master essential data structures and algorithms"
+  },
+  {
+    id: "sql",
+    title: "SQL Database",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+    instructor: "CourseMate",
+    level: "Beginner",
+    price: "₹Free",
+    rating: 4.5,
+    description: "Learn SQL for database management and manipulation"
+  },
+  {
+    id: "html-css",
+    title: "HTML and CSS",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+    instructor: "CourseMate",
+    level: "Beginner",
+    price: "₹Free",
+    rating: 4.8,
+    description: "Master web development fundamentals with HTML and CSS"
+  },
+  {
+    id: "react",
+    title: "React.js",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+    instructor: "CourseMate",
+    level: "Advance",
+    price: "₹Free",
+    rating: 4.7,
+    description: "Build modern web applications with React and its ecosystem"
+  },
+  {
+    id: "angular",
+    title: "Angular.js",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg",
+    instructor: "CourseMate",
+    level: "Advance",
+    price: "₹Free",
+    rating: 4.5,
+    description: "Learn Angular for building enterprise web applications"
+  },
+  {
+    id: "nodejs",
+    title: "Node.js",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+    instructor: "CourseMate",
+    level: "Advance",
+    price: "₹Free",
+    rating: 4.6,
+    description: "Server-side JavaScript for building scalable applications"
+  },
+  {
+    id: "expressjs",
+    title: "Express.js",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
+    instructor: "CourseMate",
+    level: "Advance",
+    price: "₹Free",
+    rating: 4.5,
+    description: "Build web APIs and applications with Express.js"
+  },
+  {
+    id: "mongodb",
+    title: "MongoDB",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
+    instructor: "CourseMate",
+    level: "Advance",
+    price: "₹Free",
+    rating: 4.6,
+    description: "Learn NoSQL database design and development"
+  },
+  {
+    id: "machine-learning",
+    title: "Machine Learning",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+    instructor: "CourseMate",
+    level: "Advance",
+    price: "₹Free",
+    rating: 4.8,
+    description: "Introduction to machine learning algorithms and applications"
+  },
+  {
+    id: "generative-ai",
+    title: "Generative AI",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg",
+    instructor: "CourseMate",
+    level: "Advance",
+    price: "₹Free",
+    rating: 4.9,
+    description: "Learn to build AI systems that generate content"
+  },
+  {
+    id: "ui-ux",
+    title: "UI/UX Design",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
+    instructor: "CourseMate",
+    level: "Beginner",
+    price: "₹Free",
+    rating: 4.7,
+    description: "Design user interfaces and experiences for web and mobile"
+  },
+  {
+    id: "power-bi",
+    title: "Power BI",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg",
+    instructor: "CourseMate",
+    level: "Beginner",
+    price: "₹Free",
+    rating: 4.6,
+    description: "Create powerful data visualizations and business insights"
+  },
+  {
+    id: "data-science",
+    title: "Data Science",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
+    instructor: "CourseMate",
+    level: "Advance",
+    price: "₹Free",
+    rating: 4.8,
+    description: "Analyze and interpret complex data to inform decision making"
+  },
+  {
+    id: "deep-learning",
+    title: "Deep Learning",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg",
+    instructor: "CourseMate",
+    level: "Advance",
+    price: "₹Free",
+    rating: 4.9,
+    description: "Advanced neural networks and deep learning architectures"
+  },
+  {
+    id: "javascript",
+    title: "JavaScript",
+    logo: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+    instructor: "CourseMate",
+    level: "Beginner",
+    price: "₹Free",
+    rating: 4.7,
+    description: "Master JavaScript for client-side web development"
   }
 ] as const;
 

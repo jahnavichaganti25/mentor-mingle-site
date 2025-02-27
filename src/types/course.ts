@@ -12,7 +12,7 @@ export interface CourseResource {
     platform: string;
     url: string;
   }>;
-  paidLinks: Array<{
+  paidLinks?: Array<{
     platform: string;
     url: string;
   }>;
