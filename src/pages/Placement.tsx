@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -17,6 +16,10 @@ const Placement = () => {
   const handleOpenQuestionPaper = (title: string, year: string) => {
     setSelectedPaper({ title, year });
     setOpenQuestionPaper(true);
+  };
+
+  const isExternalUrl = (path: string) => {
+    return path.startsWith('http://') || path.startsWith('https://');
   };
 
   return (

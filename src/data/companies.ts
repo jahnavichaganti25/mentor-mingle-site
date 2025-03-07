@@ -16,7 +16,7 @@ export const companies: Company[] = [
   {
     id: "tcs",
     name: "TCS",
-    logo: "https://drive.google.com/uc?id=1XN8w1Q9akk1IagpaSPDKVowlVCQJ1tV8",
+    logo: "/lovable-uploads/ffcaaa70-0f79-4046-a3b5-09be06b9db22.png",
     description: "Tata Consultancy Services (TCS) is an Indian multinational information technology services and consulting company headquartered in Mumbai. It is part of the Tata Group and operates in 149 locations across 46 countries.",
     interviewPattern: [
       "Online Aptitude Test (Verbal, Quantitative, Reasoning)",
@@ -64,7 +64,7 @@ export const companies: Company[] = [
   {
     id: "techmahindra",
     name: "TECH MAHINDRA",
-    logo: "https://drive.google.com/uc?id=1ltJ4CSu6rSCOgjLKtFC6LIwfVej5NXl",
+    logo: "/lovable-uploads/1a68714a-545b-4611-b21b-bfd2d759afc1.png",
     description: "Tech Mahindra is an Indian multinational information technology company. It provides IT services and business process outsourcing to companies in various vertical and horizontal markets.",
     interviewPattern: [
       "Online Assessment (Aptitude, Verbal, Technical)",
@@ -88,7 +88,7 @@ export const companies: Company[] = [
   {
     id: "wipro",
     name: "WIPRO",
-    logo: "https://drive.google.com/uc?id=15WDPKzntkQ0ux1-qXZhQ6MQ-IjSgYZWE",
+    logo: "/lovable-uploads/1d16b15a-ebaa-4997-98e3-989600e2c33f.png",
     description: "Wipro Limited is an Indian multinational corporation that provides information technology, consulting, and business process services. It is one of the largest IT services companies globally.",
     interviewPattern: [
       "Online Assessment Test (NLTH)",
@@ -112,7 +112,7 @@ export const companies: Company[] = [
   {
     id: "infosys",
     name: "INFOSYS",
-    logo: "https://drive.google.com/uc?id=1A0so4BGzkynu4k9T0hl-c6yokMBlMQiF",
+    logo: "/lovable-uploads/44f5a2ae-73fd-4ac1-8ffa-d937cabeb536.png",
     description: "Infosys Limited is an Indian multinational information technology company that provides business consulting, information technology, and outsourcing services. It is headquartered in Bangalore.",
     interviewPattern: [
       "InfyTQ Platform Assessment",
@@ -136,7 +136,7 @@ export const companies: Company[] = [
   {
     id: "mindtree",
     name: "MINDTREE",
-    logo: "https://drive.google.com/uc?id=1dkBNs61BGmaQ8bvMDMlNO2ENDtCcNSdp",
+    logo: "/lovable-uploads/e212540c-0b43-4e53-bc8c-c9b5a86a44ad.png",
     description: "Mindtree, now part of Larsen & Toubro, is an Indian multinational information technology and outsourcing company. It specializes in e-commerce, mobile applications, cloud computing, digital transformation, and more.",
     interviewPattern: [
       "Versant Test (Communication Assessment)",
