@@ -27,6 +27,28 @@
     --radius: 0.75rem;
   }
 
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 252 80% 65%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 252 80% 65%;
+  }
+
   * {
     @apply border-border antialiased;
   }
@@ -55,7 +77,7 @@
 
 @layer components {
   .hero-gradient {
-    @apply bg-gradient-to-br from-purple-50 via-white to-purple-50;
+    @apply bg-gradient-to-br from-purple-50 via-white to-purple-50 dark:from-purple-950 dark:via-gray-900 dark:to-purple-950;
   }
   
   .card-hover {
@@ -63,6 +85,6 @@
   }
 
   .nav-link {
-    @apply text-gray-600 hover:text-primary transition-colors;
+    @apply text-gray-600 dark:text-gray-300 hover:text-primary transition-colors;
   }
 }
