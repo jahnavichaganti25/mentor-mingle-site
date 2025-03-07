@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Navbar } from "@/components/Navbar";
@@ -51,7 +50,7 @@ const Index = () => {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="hero-gradient pt-32 pb-20">
+      <section className="hero-gradient pt-28 pb-16">
         <div className="container mx-auto px-4 text-center">
           <h1 className="mb-6">Learn Skills for Your Future Career</h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
@@ -66,9 +65,9 @@ const Index = () => {
       </section>
 
       {/* Popular Courses Section */}
-      <section className="py-20">
+      <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between mb-12">
+          <div className="flex items-center justify-between mb-10">
             <h2 className="text-3xl font-semibold">Popular Courses</h2>
             <Link to="/courses">
               <Button variant="outline">View All</Button>
@@ -103,9 +102,9 @@ const Index = () => {
       </section>
 
       {/* Recent Activity Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-900">
+      <section className="py-16 bg-gray-50 dark:bg-gray-900">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-semibold text-center mb-12">Recent Activity</h2>
+          <h2 className="text-3xl font-semibold text-center mb-10">Recent Activity</h2>
           <div className="max-w-3xl mx-auto">
             {recentActivity.length > 0 ? (
               <div className="space-y-4">
