@@ -40,7 +40,7 @@ export const companies: Company[] = [
   {
     id: "cts",
     name: "CTS",
-    logo: "https://drive.google.com/uc?id=1a-HWjvdfAb4t3xo0O_R8_kwlqGs6Ipt-",
+    logo: "/lovable-uploads/517a7d90-b8de-4618-824c-2532c1db8d1d.png",
     description: "Cognizant Technology Solutions (CTS) is an American multinational information technology services and consulting company. It provides digital, technology, consulting, and operations services.",
     interviewPattern: [
       "GenC Next Coding Assessment",
@@ -160,7 +160,7 @@ export const companies: Company[] = [
   {
     id: "valuelabs",
     name: "VALUE LABS",
-    logo: "https://drive.google.com/uc?id=1MC6LwK5zoTIDkmjZHgm2TxnHPGxGnrHJ",
+    logo: "/lovable-uploads/fca2fe46-3fa1-406a-923a-ae5e17c3336b.png",
     description: "Value Labs is a global technology company specializing in product development, data technology, and digital services. It has offices in the United States, India, and several other countries.",
     interviewPattern: [
       "Online Aptitude Test",
@@ -184,7 +184,7 @@ export const companies: Company[] = [
   {
     id: "mphasis",
     name: "MPHASIS",
-    logo: "https://drive.google.com/uc?id=1s4ExADXgIicpTaNjLj5Et6yv4UaPqXaT",
+    logo: "/lovable-uploads/71b37382-f463-4443-a3c2-c42b950f6e1c.png",
     description: "Mphasis is an IT services company based in Bangalore, India. It provides infrastructure technology and applications outsourcing services, as well as architecture guidance and digital transformation solutions.",
     interviewPattern: [
       "Online Aptitude and Coding Assessment",
@@ -208,7 +208,7 @@ export const companies: Company[] = [
   {
     id: "zenq",
     name: "ZENQ",
-    logo: "https://drive.google.com/uc?id=1FjZxLhhMSNhnkru1pZEGjD1-w8XJPTZQ",
+    logo: "/lovable-uploads/d03966f9-bfa2-4dfb-a1bd-038541e397e2.png",
     description: "ZenQ is a leading provider of quality engineering and software testing services. The company focuses on quality assurance, test automation, performance testing, and mobile application testing.",
     interviewPattern: [
       "Online Aptitude Test",
@@ -232,7 +232,7 @@ export const companies: Company[] = [
   {
     id: "epam",
     name: "EPAM",
-    logo: "https://drive.google.com/uc?id=14kYwuvk3DiCp_c67Qhdm5j8MQ9ctPmRm",
+    logo: "/lovable-uploads/afcdd2b8-536a-4dee-88a5-26acff1c5173.png",
     description: "EPAM Systems is a global provider of software engineering and IT consulting services. The company specializes in product development, digital platform engineering, and digital product design.",
     interviewPattern: [
       "Online Assessment (Coding and aptitude)",
@@ -256,7 +256,7 @@ export const companies: Company[] = [
   {
     id: "amcat",
     name: "AMCAT",
-    logo: "https://drive.google.com/uc?id=1vPCyQnc844BK9jsTKQ7WIzcGpx3r3J-d",
+    logo: "/lovable-uploads/aeffc477-6736-41f6-9cef-08131c145d6e.png",
     description: "AMCAT is not a company but a job skills assessment test that helps job seekers showcase their abilities to potential employers. It evaluates candidates on aptitude, technical knowledge, and personality traits.",
     interviewPattern: [
       "English Comprehension Module",
@@ -280,7 +280,7 @@ export const companies: Company[] = [
   {
     id: "elitmus",
     name: "ELITMUS",
-    logo: "https://drive.google.com/uc?id=154gp-J7a43zDe2lwvwZPQ0uvEnU7SYF1",
+    logo: "/lovable-uploads/84cfc244-81db-4f75-ad64-170aea3962d1.png",
     description: "eLitmus is a job application platform that offers the pH Test, a standardized employability test that measures cognitive, technical, and personality traits of candidates for job readiness.",
     interviewPattern: [
       "Problem Solving Module",
@@ -304,7 +304,7 @@ export const companies: Company[] = [
   {
     id: "talentbattle",
     name: "TALENT BATTLE",
-    logo: "https://drive.google.com/uc?id=1wIUuyPIS41jKHTrA_1RyMX1hBNWJ0TFS",
+    logo: "/lovable-uploads/a77474e6-0117-43b5-9571-0ed8300b4a2d.png",
     description: "Talent Battle is an ed-tech platform that helps students prepare for placement exams and provides training for various technical and non-technical skills required by the industry.",
     interviewPattern: [
       "Aptitude Assessment",
@@ -328,7 +328,7 @@ export const companies: Company[] = [
   {
     id: "trhr",
     name: "TR & HR Preparation",
-    logo: "https://drive.google.com/uc?id=1jkLdSlyv-zAx3a8G-EZ38eXQV_AGjci4",
+    logo: "/lovable-uploads/f633f911-4ac4-42d8-b527-5dab1b3b1054.png",
     description: "TR & HR Preparation resources help candidates prepare for Technical Rounds (TR) and Human Resources (HR) interviews across various companies. These are essential components of most job selection processes.",
     interviewPattern: [
       "Technical Round Preparation (Domain knowledge)",
