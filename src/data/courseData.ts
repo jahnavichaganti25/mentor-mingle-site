@@ -1,4 +1,3 @@
-
 import { CourseResource, Question, CourseData } from "@/types/course";
 
 export const courseResources: Record<string, CourseResource> = {
@@ -568,7 +567,6 @@ export const courseQuizzes: Record<string, Question[]> = {
       correctAnswer: "#comment"
     }
   ],
-  // Add quiz questions for other courses as needed
   "java": [
     {
       id: 1,
@@ -649,6 +647,324 @@ export const courseQuizzes: Record<string, Question[]> = {
       question: "Which method is used to get the length of a String?",
       options: ["size()", "length()", "len()", "sizeof()"],
       correctAnswer: "length()"
+    }
+  ],
+  "cpp": [
+    {
+      id: 1,
+      question: "What does C++ stand for?",
+      options: [
+        "C Plus Plus",
+        "C with Classes",
+        "Computer Programming Plus",
+        "Complex Programming"
+      ],
+      correctAnswer: "C with Classes"
+    },
+    {
+      id: 2,
+      question: "Which of the following is not a feature of C++?",
+      options: [
+        "Object-oriented programming",
+        "Exception handling",
+        "Automatic garbage collection",
+        "Operator overloading"
+      ],
+      correctAnswer: "Automatic garbage collection"
+    },
+    {
+      id: 3,
+      question: "Which operator is used for dynamic memory allocation in C++?",
+      options: ["malloc()", "alloc()", "new", "create()"],
+      correctAnswer: "new"
+    },
+    {
+      id: 4,
+      question: "What is the correct syntax for declaring a constant in C++?",
+      options: [
+        "const int x = 10;",
+        "constant int x = 10;",
+        "int const x = 10;",
+        "Both A and C are correct"
+      ],
+      correctAnswer: "Both A and C are correct"
+    },
+    {
+      id: 5,
+      question: "What is the name of the C++ standard library that provides cin and cout?",
+      options: ["cstdio", "iostream", "stdio.h", "iolib"],
+      correctAnswer: "iostream"
+    },
+    {
+      id: 6,
+      question: "Which of the following is not a valid C++ data type?",
+      options: ["int", "float", "string", "real"],
+      correctAnswer: "real"
+    },
+    {
+      id: 7,
+      question: "What is function overloading?",
+      options: [
+        "Having multiple functions with the same name but different parameters",
+        "Having a function inside another function",
+        "Having a function that calls itself",
+        "Having a function that overrides another function"
+      ],
+      correctAnswer: "Having multiple functions with the same name but different parameters"
+    },
+    {
+      id: 8,
+      question: "What is the purpose of the 'virtual' keyword in C++?",
+      options: [
+        "To declare a virtual machine",
+        "To create a virtual function",
+        "To make a class abstract",
+        "To allocate memory virtually"
+      ],
+      correctAnswer: "To create a virtual function"
+    },
+    {
+      id: 9,
+      question: "Which of the following is true about C++ templates?",
+      options: [
+        "They are used for input/output operations",
+        "They allow generic programming",
+        "They are used to create GUI elements",
+        "They are deprecated in modern C++"
+      ],
+      correctAnswer: "They allow generic programming"
+    },
+    {
+      id: 10,
+      question: "What is the default access specifier for members of a class in C++?",
+      options: ["public", "private", "protected", "default"],
+      correctAnswer: "private"
+    }
+  ],
+  "dsa": [
+    {
+      id: 1,
+      question: "What is the time complexity of binary search?",
+      options: ["O(1)", "O(n)", "O(log n)", "O(n log n)"],
+      correctAnswer: "O(log n)"
+    },
+    {
+      id: 2,
+      question: "Which data structure is based on the Last In First Out (LIFO) principle?",
+      options: ["Queue", "Stack", "Linked List", "Tree"],
+      correctAnswer: "Stack"
+    },
+    {
+      id: 3,
+      question: "What is the worst-case time complexity of quicksort?",
+      options: ["O(n)", "O(n log n)", "O(n²)", "O(1)"],
+      correctAnswer: "O(n²)"
+    },
+    {
+      id: 4,
+      question: "Which of these is not a balanced tree data structure?",
+      options: ["AVL tree", "Red-Black tree", "B-tree", "Binary Search Tree"],
+      correctAnswer: "Binary Search Tree"
+    },
+    {
+      id: 5,
+      question: "What is the time complexity of insertion in a hash table?",
+      options: ["O(1) average case", "O(n)", "O(log n)", "O(n²)"],
+      correctAnswer: "O(1) average case"
+    },
+    {
+      id: 6,
+      question: "Which sorting algorithm is the most efficient for nearly sorted data?",
+      options: ["Bubble Sort", "Quick Sort", "Merge Sort", "Insertion Sort"],
+      correctAnswer: "Insertion Sort"
+    },
+    {
+      id: 7,
+      question: "What is the primary advantage of a linked list over an array?",
+      options: [
+        "Faster access to elements",
+        "Dynamic size",
+        "Less memory usage",
+        "Better cache locality"
+      ],
+      correctAnswer: "Dynamic size"
+    },
+    {
+      id: 8,
+      question: "Which data structure is most suitable for implementing a priority queue?",
+      options: ["Array", "Linked List", "Heap", "Stack"],
+      correctAnswer: "Heap"
+    },
+    {
+      id: 9,
+      question: "What is the space complexity of depth-first search (DFS)?",
+      options: ["O(1)", "O(n)", "O(log n)", "O(n + e)"],
+      correctAnswer: "O(n)"
+    },
+    {
+      id: 10,
+      question: "Which of these is not an application of a stack?",
+      options: [
+        "Function call management",
+        "Expression evaluation",
+        "Breadth-first search",
+        "Backtracking algorithms"
+      ],
+      correctAnswer: "Breadth-first search"
+    }
+  ],
+  "sql": [
+    {
+      id: 1,
+      question: "What does SQL stand for?",
+      options: [
+        "Structured Query Language",
+        "Simple Query Language",
+        "Sequential Query Language",
+        "Standard Query Language"
+      ],
+      correctAnswer: "Structured Query Language"
+    },
+    {
+      id: 2,
+      question: "Which SQL statement is used to extract data from a database?",
+      options: ["SELECT", "EXTRACT", "GET", "OPEN"],
+      correctAnswer: "SELECT"
+    },
+    {
+      id: 3,
+      question: "Which SQL clause is used to filter records?",
+      options: ["FROM", "GROUP BY", "WHERE", "HAVING"],
+      correctAnswer: "WHERE"
+    },
+    {
+      id: 4,
+      question: "Which of the following is not a valid SQL join type?",
+      options: ["INNER JOIN", "LEFT JOIN", "RIGHT JOIN", "AROUND JOIN"],
+      correctAnswer: "AROUND JOIN"
+    },
+    {
+      id: 5,
+      question: "What is the purpose of the GROUP BY statement?",
+      options: [
+        "To sort the result set",
+        "To filter records before grouping",
+        "To group rows that have the same values",
+        "To join tables together"
+      ],
+      correctAnswer: "To group rows that have the same values"
+    },
+    {
+      id: 6,
+      question: "Which SQL function returns the current date?",
+      options: ["DATE()", "NOW()", "GETDATE()", "CURDATE()"],
+      correctAnswer: "CURDATE()"
+    },
+    {
+      id: 7,
+      question: "What is the default order of the ORDER BY clause?",
+      options: ["Ascending", "Descending", "Random", "No default order"],
+      correctAnswer: "Ascending"
+    },
+    {
+      id: 8,
+      question: "Which constraint is used to ensure that all values in a column are different?",
+      options: ["UNIQUE", "PRIMARY KEY", "NOT NULL", "CHECK"],
+      correctAnswer: "UNIQUE"
+    },
+    {
+      id: 9,
+      question: "What is a foreign key?",
+      options: [
+        "A key that can be used to uniquely identify a row",
+        "A key that is used to link two tables together",
+        "A key that is not used in the current database",
+        "A key from a different database"
+      ],
+      correctAnswer: "A key that is used to link two tables together"
+    },
+    {
+      id: 10,
+      question: "Which SQL statement is used to update data in a database?",
+      options: ["SAVE", "MODIFY", "UPDATE", "CHANGE"],
+      correctAnswer: "UPDATE"
+    }
+  ],
+  "javascript": [
+    {
+      id: 1,
+      question: "What is JavaScript?",
+      options: [
+        "A server-side programming language",
+        "A client-side scripting language",
+        "A database query language",
+        "A markup language"
+      ],
+      correctAnswer: "A client-side scripting language"
+    },
+    {
+      id: 2,
+      question: "Which symbol is used for single-line comments in JavaScript?",
+      options: ["//", "/*", "#", "--"],
+      correctAnswer: "//"
+    },
+    {
+      id: 3,
+      question: "Which function is used to print content in the browser's console?",
+      options: ["console.write()", "console.log()", "print()", "document.write()"],
+      correctAnswer: "console.log()"
+    },
+    {
+      id: 4,
+      question: "Which operator is used for strict equality comparison?",
+      options: ["==", "===", "=", "!="],
+      correctAnswer: "==="
+    },
+    {
+      id: 5,
+      question: "Which method is used to add an element at the end of an array?",
+      options: ["push()", "pop()", "unshift()", "shift()"],
+      correctAnswer: "push()"
+    },
+    {
+      id: 6,
+      question: "What will 'typeof null' return in JavaScript?",
+      options: ["null", "undefined", "object", "number"],
+      correctAnswer: "object"
+    },
+    {
+      id: 7,
+      question: "Which function is used to parse a string to integer in JavaScript?",
+      options: ["Integer.parse()", "parseInteger()", "parseInt()", "Number.parseInt()"],
+      correctAnswer: "parseInt()"
+    },
+    {
+      id: 8,
+      question: "How do you declare a variable in JavaScript?",
+      options: [
+        "var, let, const",
+        "variable, let, const",
+        "var, variable, constant",
+        "declare, var, const"
+      ],
+      correctAnswer: "var, let, const"
+    },
+    {
+      id: 9,
+      question: "What does the 'this' keyword refer to in JavaScript?",
+      options: [
+        "The current function",
+        "The parent function",
+        "The object the function is a property of",
+        "The global window object always"
+      ],
+      correctAnswer: "The object the function is a property of"
+    },
+    {
+      id: 10,
+      question: "Which event occurs when a user clicks on an HTML element?",
+      options: ["onmouseover", "onchange", "onclick", "onmouseclick"],
+      correctAnswer: "onclick"
     }
   ]
 };
@@ -855,3 +1171,4 @@ export const courseData: Record<string, CourseData> = {
     ]
   }
 };
+

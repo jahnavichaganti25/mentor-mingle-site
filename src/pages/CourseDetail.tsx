@@ -9,7 +9,7 @@ import { CourseResources } from "@/components/course/CourseResources";
 import { courseData, courseQuizzes, courseResources } from "@/data/courseData";
 
 const CourseDetail = () => {
-  const { courseId = "html" } = useParams();
+  const { courseId = "intro-programming" } = useParams();
   const navigate = useNavigate();
   const { toast } = useToast();
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -23,10 +23,15 @@ const CourseDetail = () => {
 
   const handleStartQuiz = () => {
     setShowQuiz(true);
+    setCurrentQuestion(0);
+    setScore(0);
+    setIsCompleted(false);
   };
 
   const handleAnswer = (selectedAnswer: string) => {
-    if (selectedAnswer === questions[currentQuestion].correctAnswer) {
+    const isCorrect = selectedAnswer === questions[currentQuestion].correctAnswer;
+    
+    if (isCorrect) {
       setScore(score + 1);
     }
 
@@ -36,7 +41,7 @@ const CourseDetail = () => {
       setIsCompleted(true);
       toast({
         title: "Quiz Completed!",
-        description: `You scored ${score + 1} out of ${questions.length}. Resources have been unlocked!`,
+        description: `You scored ${isCorrect ? score + 1 : score} out of ${questions.length}. Resources have been unlocked!`,
       });
     }
   };
@@ -65,18 +70,24 @@ const CourseDetail = () => {
           </div>
         </div>
 
-        <CourseQuiz
-          currentQuestion={currentQuestion}
-          questions={questions}
-          onAnswer={handleAnswer}
-          showQuiz={showQuiz}
-          isCompleted={isCompleted}
-          onStartQuiz={handleStartQuiz}
-        />
+        {questions.length > 0 ? (
+          <CourseQuiz
+            currentQuestion={currentQuestion}
+            questions={questions}
+            onAnswer={handleAnswer}
+            showQuiz={showQuiz}
+            isCompleted={isCompleted}
+            onStartQuiz={handleStartQuiz}
+          />
+        ) : (
+          <div className="bg-yellow-50 border border-yellow-200 p-4 mb-8 rounded-lg">
+            <p className="text-yellow-800">Quiz for this course is coming soon!</p>
+          </div>
+        )}
 
         <CourseResources 
           resources={resources} 
-          isCompleted={isCompleted} 
+          isCompleted={isCompleted || questions.length === 0} 
         />
       </main>
 

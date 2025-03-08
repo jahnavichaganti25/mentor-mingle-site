@@ -40,16 +40,19 @@ export const CourseResources = ({ resources, isCompleted }: CourseResourcesProps
         </div>
       </div>
 
-      <Separator className="my-6" />
-
-      <div>
-        <h3 className="text-lg font-medium mb-3">Premium Resources</h3>
-        <div className="space-y-1">
-          {resources.paidLinks.map((link, index) => (
-            <ResourceLink key={index} {...link} />
-          ))}
-        </div>
-      </div>
+      {resources.paidLinks && resources.paidLinks.length > 0 && (
+        <>
+          <Separator className="my-6" />
+          <div>
+            <h3 className="text-lg font-medium mb-3">Premium Resources</h3>
+            <div className="space-y-1">
+              {resources.paidLinks.map((link, index) => (
+                <ResourceLink key={index} {...link} />
+              ))}
+            </div>
+          </div>
+        </>
+      )}
     </Card>
   );
 };
