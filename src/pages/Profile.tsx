@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -9,16 +9,32 @@ import { UserProfile } from "@/components/profile/UserProfile";
 import { ProfileSettings } from "@/components/profile/ProfileSettings";
 import { AboutUs } from "@/components/profile/AboutUs";
 import { LogOut, User, Settings, Info } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Profile = () => {
   const [activeTab, setActiveTab] = useState("user-details");
+  const { user, isLoading, signOut } = useAuth();
+  const navigate = useNavigate();
   
-  const handleLogout = () => {
-    // Handle logout functionality here
-    console.log("User logged out");
-    // For now, we'll just redirect to the homepage
-    window.location.href = "/";
+  const handleLogout = async () => {
+    try {
+      await signOut();
+      navigate("/");
+    } catch (error) {
+      console.error("Error logging out:", error);
+    }
   };
+
+  // If still loading, don't render anything yet
+  if (isLoading) {
+    return <div className="flex items-center justify-center min-h-screen">Loading...</div>;
+  }
+
+  // If not logged in, redirect to homepage
+  if (!user) {
+    return <Navigate to="/" replace />;
+  }
 
   return (
     <div className="min-h-screen flex flex-col">
