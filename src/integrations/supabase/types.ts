@@ -39,26 +39,124 @@ export type Database = {
         }
         Relationships: []
       }
+      placement_applications: {
+        Row: {
+          cover_letter: string | null
+          created_at: string | null
+          id: string
+          placement_id: string
+          resume_url: string | null
+          status: string | null
+          updated_at: string | null
+          user_id: string
+        }
+        Insert: {
+          cover_letter?: string | null
+          created_at?: string | null
+          id?: string
+          placement_id: string
+          resume_url?: string | null
+          status?: string | null
+          updated_at?: string | null
+          user_id: string
+        }
+        Update: {
+          cover_letter?: string | null
+          created_at?: string | null
+          id?: string
+          placement_id?: string
+          resume_url?: string | null
+          status?: string | null
+          updated_at?: string | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "placement_applications_placement_id_fkey"
+            columns: ["placement_id"]
+            isOneToOne: false
+            referencedRelation: "placements"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      placements: {
+        Row: {
+          application_link: string | null
+          closes_at: string | null
+          company: string
+          created_at: string | null
+          description: string | null
+          id: string
+          location: string | null
+          requirements: string[] | null
+          salary_range: string | null
+          title: string
+          type: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          application_link?: string | null
+          closes_at?: string | null
+          company: string
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          location?: string | null
+          requirements?: string[] | null
+          salary_range?: string | null
+          title: string
+          type?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          application_link?: string | null
+          closes_at?: string | null
+          company?: string
+          created_at?: string | null
+          description?: string | null
+          id?: string
+          location?: string | null
+          requirements?: string[] | null
+          salary_range?: string | null
+          title?: string
+          type?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
+          bio: string | null
           created_at: string
+          education: Json | null
+          experience: Json | null
           full_name: string | null
           id: string
+          skills: string[] | null
           updated_at: string
         }
         Insert: {
           avatar_url?: string | null
+          bio?: string | null
           created_at?: string
+          education?: Json | null
+          experience?: Json | null
           full_name?: string | null
           id: string
+          skills?: string[] | null
           updated_at?: string
         }
         Update: {
           avatar_url?: string | null
+          bio?: string | null
           created_at?: string
+          education?: Json | null
+          experience?: Json | null
           full_name?: string | null
           id?: string
+          skills?: string[] | null
           updated_at?: string
         }
         Relationships: []

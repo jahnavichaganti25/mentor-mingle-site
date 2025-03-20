@@ -1,7 +1,7 @@
 
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
-import { ProfileRecord } from "@/types/database";
+import { ProfileRecord, ProfileWithDetails, EducationEntry, ExperienceEntry } from "@/types/database";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useToast } from "@/components/ui/use-toast";
 
@@ -10,7 +10,7 @@ export function useProfile() {
   const { toast } = useToast();
   const queryClient = useQueryClient();
 
-  const fetchProfile = async (): Promise<ProfileRecord | null> => {
+  const fetchProfile = async (): Promise<ProfileWithDetails | null> => {
     if (!user) return null;
 
     const { data, error } = await supabase
@@ -24,10 +24,15 @@ export function useProfile() {
       throw error;
     }
 
-    return data;
+    // Parse JSON fields for frontend use
+    return {
+      ...data,
+      education: Array.isArray(data.education) ? data.education : [],
+      experience: Array.isArray(data.experience) ? data.experience : [],
+    };
   };
 
-  const updateProfile = async (updatedProfile: Partial<ProfileRecord>): Promise<ProfileRecord> => {
+  const updateProfile = async (updatedProfile: Partial<ProfileWithDetails>): Promise<ProfileWithDetails> => {
     if (!user) throw new Error("Not authenticated");
 
     const { data, error } = await supabase
@@ -42,7 +47,12 @@ export function useProfile() {
       throw error;
     }
 
-    return data;
+    // Parse JSON fields for frontend use
+    return {
+      ...data,
+      education: Array.isArray(data.education) ? data.education : [],
+      experience: Array.isArray(data.experience) ? data.experience : [],
+    };
   };
 
   const profileQuery = useQuery({
