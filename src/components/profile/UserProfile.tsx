@@ -3,16 +3,28 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Pencil } from "lucide-react";
+import { useProfile } from "@/hooks/useProfile";
+import { useAuth } from "@/contexts/AuthContext";
+import { useCourseProgress } from "@/hooks/useCourseProgress";
 
 export const UserProfile = () => {
-  // In a real application, this would come from your auth state or API
-  const user = {
-    name: "John Doe",
-    email: "john.doe@example.com",
-    avatar: "",
-    role: "Student",
-    joinedDate: "January 2023"
-  };
+  const { user } = useAuth();
+  const { profile, isLoading } = useProfile();
+  const { allProgress, isLoadingProgress } = useCourseProgress();
+  
+  // Calculate course completion stats
+  const totalCourses = allProgress?.length || 0;
+  const completedCourses = allProgress?.filter(course => course.completed)?.length || 0;
+  const courseCompletionPercentage = totalCourses > 0 ? (completedCourses / totalCourses) * 100 : 0;
+  
+  // Calculate quiz completion stats
+  const quizAttempts = allProgress?.length || 0;
+  const quizPassed = allProgress?.filter(course => course.progress >= 70)?.length || 0;
+  const quizCompletionPercentage = quizAttempts > 0 ? (quizPassed / quizAttempts) * 100 : 0;
+
+  if (isLoading) {
+    return <div>Loading profile...</div>;
+  }
 
   return (
     <div className="space-y-6">
@@ -23,24 +35,28 @@ export const UserProfile = () => {
         <CardContent>
           <div className="flex flex-col sm:flex-row gap-6 items-center sm:items-start">
             <Avatar className="h-24 w-24">
-              <AvatarImage src={user.avatar} alt={user.name} />
-              <AvatarFallback className="text-2xl">{user.name.split(" ").map(n => n[0]).join("")}</AvatarFallback>
+              <AvatarImage src={profile?.avatar_url || ""} alt={profile?.full_name || "User"} />
+              <AvatarFallback className="text-2xl">
+                {profile?.full_name 
+                  ? profile.full_name.split(" ").map(n => n[0]).join("") 
+                  : user?.email?.charAt(0).toUpperCase() || "U"}
+              </AvatarFallback>
             </Avatar>
             
             <div className="space-y-4 text-center sm:text-left flex-1">
               <div>
-                <h3 className="text-xl font-semibold">{user.name}</h3>
-                <p className="text-muted-foreground">{user.email}</p>
+                <h3 className="text-xl font-semibold">{profile?.full_name || "User"}</h3>
+                <p className="text-muted-foreground">{user?.email}</p>
               </div>
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <p className="text-sm text-muted-foreground">Role</p>
-                  <p>{user.role}</p>
+                  <p>Student</p>
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Joined</p>
-                  <p>{user.joinedDate}</p>
+                  <p>{new Date(user?.created_at || Date.now()).toLocaleDateString()}</p>
                 </div>
               </div>
               
@@ -62,20 +78,26 @@ export const UserProfile = () => {
             <div>
               <div className="flex justify-between mb-1">
                 <span className="text-sm font-medium">Courses Completed</span>
-                <span className="text-sm font-medium">3/12</span>
+                <span className="text-sm font-medium">{completedCourses}/{totalCourses}</span>
               </div>
               <div className="w-full bg-muted rounded-full h-2">
-                <div className="bg-primary h-2 rounded-full" style={{ width: "25%" }}></div>
+                <div 
+                  className="bg-primary h-2 rounded-full" 
+                  style={{ width: `${courseCompletionPercentage}%` }}
+                ></div>
               </div>
             </div>
             
             <div>
               <div className="flex justify-between mb-1">
                 <span className="text-sm font-medium">Quizzes Completed</span>
-                <span className="text-sm font-medium">8/24</span>
+                <span className="text-sm font-medium">{quizPassed}/{quizAttempts}</span>
               </div>
               <div className="w-full bg-muted rounded-full h-2">
-                <div className="bg-primary h-2 rounded-full" style={{ width: "33%" }}></div>
+                <div 
+                  className="bg-primary h-2 rounded-full" 
+                  style={{ width: `${quizCompletionPercentage}%` }}
+                ></div>
               </div>
             </div>
           </div>

@@ -1,50 +1,69 @@
+
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Link } from "react-router-dom";
 import { BookOpen, Clock } from "lucide-react";
-
-// Define 4 popular courses with additional info
-const popularCourses = [
-  { 
-    id: 1, 
-    title: "Python",
-    category: "Programming",
-    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=300&h=200",
-    description: "Learn Python programming from scratch with hands-on projects"
-  },
-  { 
-    id: 3, 
-    title: "Machine Learning", 
-    category: "AI/ML",
-    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=300&h=200",
-    description: "Master machine learning algorithms and practical applications"
-  },
-  { 
-    id: 5, 
-    title: "React.js", 
-    category: "Web Development",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=300&h=200",
-    description: "Build modern web applications with React and related tools"
-  },
-  { 
-    id: 7, 
-    title: "Data Science", 
-    category: "Data Analytics",
-    image: "https://images.unsplash.com/photo-1531297484001-80022131f5a1?auto=format&fit=crop&q=80&w=300&h=200",
-    description: "Analyze data and extract insights using statistical methods"
-  },
-];
-
-// Recent activity items
-const recentActivity = [
-  { id: 1, title: "Completed Chapter 1 of Python", timestamp: "2 days ago" },
-  { id: 2, title: "Started Data Science course", timestamp: "5 days ago" },
-  { id: 3, title: "Completed quiz in Machine Learning", timestamp: "1 week ago" },
-];
+import { useCourses } from "@/hooks/useCourses";
+import { useAuth } from "@/contexts/AuthContext";
+import { useCourseProgress } from "@/hooks/useCourseProgress";
 
 const Index = () => {
+  const { user } = useAuth();
+  const { useCoursesList } = useCourses();
+  const { data: courses, isLoading: isLoadingCourses } = useCoursesList();
+  const { allProgress, isLoadingProgress } = useCourseProgress();
+
+  // Get popular courses (most recently added or highest rated)
+  const popularCourses = courses?.slice(0, 4) || [];
+
+  // Generate recent activity based on user progress
+  const generateRecentActivity = () => {
+    if (!user || !allProgress || allProgress.length === 0) {
+      return [];
+    }
+
+    // Sort by last accessed time
+    const sortedProgress = [...allProgress].sort(
+      (a, b) => new Date(b.last_accessed).getTime() - new Date(a.last_accessed).getTime()
+    );
+
+    // Take up to 3 most recent activities
+    return sortedProgress.slice(0, 3).map(progress => {
+      const courseTitle = courses?.find(c => c.id === progress.course_id)?.title || "Unknown Course";
+      const daysAgo = Math.floor((new Date().getTime() - new Date(progress.last_accessed).getTime()) / (1000 * 60 * 60 * 24));
+      
+      let activity = progress.completed 
+        ? `Completed ${courseTitle}`
+        : `Made progress on ${courseTitle}`;
+      
+      let timestamp = daysAgo === 0 
+        ? "Today" 
+        : daysAgo === 1 
+          ? "Yesterday" 
+          : daysAgo < 7 
+            ? `${daysAgo} days ago` 
+            : `${Math.floor(daysAgo / 7)} weeks ago`;
+      
+      return { id: progress.id, title: activity, timestamp };
+    });
+  };
+
+  const recentActivity = generateRecentActivity();
+
+  if (isLoadingCourses) {
+    return (
+      <div className="min-h-screen flex flex-col">
+        <Navbar />
+        <div className="flex-grow flex items-center justify-center">
+          <p>Loading courses...</p>
+        </div>
+        <Footer />
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen flex flex-col">
       <Navbar />
@@ -79,18 +98,23 @@ const Index = () => {
               <Card key={course.id} className="p-0 overflow-hidden card-hover">
                 <div className="relative h-48 w-full">
                   <img 
-                    src={course.image} 
+                    src={course.image_url || course.logo} 
                     alt={course.title} 
                     className="w-full h-full object-cover"
+                    onError={(e) => {
+                      // Fallback if image fails
+                      const target = e.target as HTMLImageElement;
+                      target.src = "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=300&h=200";
+                    }}
                   />
                 </div>
                 <div className="p-6">
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-sm font-medium text-primary">{course.category}</span>
+                    <span className="text-sm font-medium text-primary">{course.category || "Programming"}</span>
                     <BookOpen className="h-4 w-4 text-gray-500" />
                   </div>
                   <h3 className="text-lg font-semibold mb-2">{course.title}</h3>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">{course.description}</p>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm mb-4">{course.description || "Learn valuable skills with this course"}</p>
                   <Link to={`/course/${course.id}`}>
                     <Button variant="outline" className="w-full">Learn More</Button>
                   </Link>
@@ -106,7 +130,7 @@ const Index = () => {
         <div className="container mx-auto px-4">
           <h2 className="text-3xl font-semibold text-center mb-10">Recent Activity</h2>
           <div className="max-w-3xl mx-auto">
-            {recentActivity.length > 0 ? (
+            {user && recentActivity.length > 0 ? (
               <div className="space-y-4">
                 {recentActivity.map(activity => (
                   <Card key={activity.id} className="p-4 hover:shadow-md transition-all">
@@ -125,10 +149,13 @@ const Index = () => {
             ) : (
               <Card className="p-6">
                 <p className="text-gray-600 dark:text-gray-400 text-center">
-                  Sign in to view your recent activity and track your learning progress
+                  {user 
+                    ? "Start exploring courses to see your recent activity here"
+                    : "Sign in to view your recent activity and track your learning progress"
+                  }
                 </p>
                 <div className="flex justify-center mt-4">
-                  <Button>Sign In</Button>
+                  {!user && <Button>Sign In</Button>}
                 </div>
               </Card>
             )}
